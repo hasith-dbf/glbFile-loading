@@ -183,8 +183,8 @@ export class Viewer {
 
     const dt = (time - this.prevTime) / 1000;
 
-    this.controls.update();
-    // this.flyControls.update(0.05);
+    // this.controls.update();
+    this.flyControls.update(0.05);
     this.stats.update();
     this.mixer && this.mixer.update(dt);
     this.render();
