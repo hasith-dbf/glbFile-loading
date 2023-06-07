@@ -483,7 +483,7 @@ export class Viewer {
   }
   brushSelectedObject(selectedMeshObject, x, y, z) {
     const newObject = new THREE.Object3D();
-    const sphereGeometry = new THREE.BoxGeometry(40, 20, 50);
+    const sphereGeometry = new THREE.BoxGeometry(37.4, 20, 47);
     const material = new THREE.MeshBasicMaterial({
       transparent: true,
       opacity: 0,
@@ -492,7 +492,8 @@ export class Viewer {
     const axesHelper = new THREE.AxesHelper(100);
     axesHelper.setColors("#EA1639", "#30EA16", "#1640EA");
     const sphere = new THREE.Mesh(sphereGeometry, material);
-    sphere.position.x += 20;
+    sphere.position.x += 18.1;
+    sphere.rotateY(Math.PI / 48);
     newObject.add(sphere);
 
     let result = {};
@@ -602,27 +603,29 @@ export class Viewer {
       const newObject2 = new THREE.Object3D();
       const newObject3 = new THREE.Object3D();
 
-      const sphereGeometry = new THREE.BoxGeometry(40, 20, 50);
+      const sphereGeometry = new THREE.BoxGeometry(37.4, 20, 47);
       const material = new THREE.MeshBasicMaterial({
         transparent: true,
         opacity: 0,
         // color: 0xff0000,
       });
 
-      const sphereGeometry1 = new THREE.BoxGeometry(40, 20, 50);
+      const sphereGeometry1 = new THREE.BoxGeometry(37.4, 20, 47);
       const material1 = new THREE.MeshBasicMaterial({
         transparent: true,
-        opacity: 0.5,
-        // color: 0xff0000,
+        opacity: 0,
+        color: "#089ccc",
       });
 
       const axesHelper = new THREE.AxesHelper(100);
       axesHelper.setColors("#EA1639", "#30EA16", "#1640EA");
-      this.scene.add(axesHelper);
+      // this.scene.add(axesHelper);
       const sphere = new THREE.Mesh(sphereGeometry, material);
       const sphere3 = new THREE.Mesh(sphereGeometry1, material1);
-      sphere.position.x += 20;
-      sphere3.position.x += 20;
+      sphere.position.x += 18.1;
+      sphere3.position.x += 18.1;
+      sphere.rotateY(Math.PI / 48);
+      sphere3.rotateY(Math.PI / 48);
       newObject.add(sphere);
       newObject3.add(sphere3);
       // Add all meshes to the new 3d object
@@ -641,7 +644,15 @@ export class Viewer {
       const selectedMeshObject2 = meshObjects[25].clone();
       const selectedMeshObject3 = meshObjects[26];
       const selectedMeshObject4 = meshObjects[27];
-      const res2 = this.brushSelectedObject(selectedMeshObject2, -50, 20, 0);
+      const selectedMeshObject7 = meshObjects[36];
+      const selectedMeshObject8 = meshObjects[18];
+      const selectedMeshObject9 = meshObjects[19];
+      const res2 = this.brushSelectedObject(
+        selectedMeshObject2,
+        -49.45,
+        20,
+        -0.75
+      );
       const res3 = this.brushSelectedObject(
         selectedMeshObject3.children[0].clone(),
         23,
@@ -650,8 +661,8 @@ export class Viewer {
       );
       const res4 = this.brushSelectedObject(
         selectedMeshObject4.children[0].clone(),
-        9.5,
-        11,
+        9,
+        11.5,
         -20
       );
       const res5 = this.brushSelectedObject(
@@ -666,7 +677,24 @@ export class Viewer {
         11,
         -20
       );
-
+      const res7 = this.brushSelectedObject(
+        selectedMeshObject7.clone(),
+        -83.5,
+        20.5,
+        -52
+      );
+      const res8 = this.brushSelectedObject(
+        selectedMeshObject8.clone(),
+        -66.2,
+        49.5,
+        83
+      );
+      const res9 = this.brushSelectedObject(
+        selectedMeshObject9.clone(),
+        -100.25,
+        49.75,
+        31.5
+      );
       selectedMeshObject.position.y += 9;
       selectedMeshObject.position.z += 25;
       selectedMeshObject.position.x += 11;
@@ -696,8 +724,13 @@ export class Viewer {
         newObject2.add(res4);
         newObject2.add(res5);
         newObject2.add(res6);
+        newObject2.add(res7);
+        newObject2.add(res8);
+        newObject2.add(res9);
         let myArray = object.children[0].children;
+        myArray.splice(36, 1);
         myArray.splice(24, 4);
+        myArray.splice(18, 2);
         object.children[0].children = myArray;
         newObject2.add(object);
         // newObject2.add(meshObjects[0]);
